@@ -1,33 +1,48 @@
-<div class="example-container">
-    <h2>To do</h2>
-  
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[doneList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      @for (item of todo; track item) {
-        <div class="example-box" cdkDrag>{{item}}</div>
-      }
+<div style="padding: 16px; display: flex;">
+    <div class="content">
+        <div class="content_item">
+          <h2>To do</h2>
+          <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of todo; track item) {
+              <div class="example-box" cdkDrag>
+                {{item.content}}
+                <button mat-stroked-button (click)="handleComplete(item.id)">Complete</button>
+              </div>
+            }
+          </div>
+        </div>
+        <div class="content_item">
+          <h2>Done</h2>
+          <div
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of done; track item) {
+              <div class="example-box" cdkDrag>
+                {{item.content}}
+                <button mat-stroked-button color="warn" (click)="handleDelete(item.id)">Delete</button>
+              </div>
+            }
+          </div>
+        </div>
+
     </div>
-  </div>
-  
-  <div class="example-container">
-    <h2>Done</h2>
-  
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      @for (item of done; track item) {
-        <div class="example-box" cdkDrag>{{item}}</div>
-      }
+    <div class="form">
+      <h2>Add New Task</h2>
+      <div class="form_content">
+          <input type="text" placeholder="Typing your task..." [(ngModel)]="newTask">
+          <button mat-stroked-button (click)="addNewTask()">Complete</button>
+      </div>
     </div>
-  </div>
+</div>
   
   

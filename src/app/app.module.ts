@@ -14,6 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatBadgeModule } from '@angular/material/badge';
 import { HomeComponent } from './components/home/home.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatIconModule,
     MatTabsModule,
     MatBadgeModule,
-    DragDropModule
+    DragDropModule,
+    MatButtonModule
   ],
   providers: [
     provideAnimationsAsync()
